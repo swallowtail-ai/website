@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Swallowtail</title>
-<meta name="description" content="A world model on chips to plan their thermodynamics.">
+<meta name="description" content="Self-improving AI through software-hardware co-learning.">
 <link rel="icon" href="swallowtail-mark.svg" type="image/svg+xml">
 <meta property="og:title" content="Swallowtail">
-<meta property="og:description" content="A world model on chips to plan their thermodynamics.">
+<meta property="og:description" content="Self-improving AI through software-hardware co-learning.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://swallowtaillabs.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink:   #1A1A1A;
@@ -39,7 +39,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* the page is short now, so centre it rather than hanging it off the top */
   main {
     flex: 1;
     display: flex;
@@ -49,8 +48,6 @@
     text-align: center;
     padding: clamp(3.5rem, 10vh, 6rem) 1.5rem;
   }
-
-  /* --- wordmark ------------------------------------------------------ */
 
   .lockup {
     display: flex;
@@ -73,48 +70,15 @@
     color: var(--cool);
   }
 
-  /* --- text ----------------------------------------------------------- */
-
-  .pivot,
-  .thesis,
-  .close {
-    max-width: 34rem;
-    text-wrap: pretty;
-  }
-
-  .rule {
-    width: 44px;
-    height: 1px;
-    margin: clamp(2.5rem, 7vh, 4rem) 0;
-    background: var(--pale);
-    border: 0;
-  }
-
-  /* the two claims: the problem, and the thesis it opens onto */
-  .pivot,
-  .thesis {
-    margin: 0;
+  .tagline {
+    max-width: 30rem;
+    margin: clamp(1.6rem, 4.5vh, 2.4rem) 0 0;
     font-family: var(--serif);
-    font-size: clamp(1.3rem, 3.4vw, 1.7rem);
-    line-height: 1.55;
-    color: var(--cool);
-  }
-
-  .close {
-    margin: clamp(2.5rem, 7vh, 4rem) 0 0;
-    font-size: clamp(0.95rem, 2.2vw, 1.02rem);
-    line-height: 1.7;
+    font-size: clamp(1.08rem, 2.8vw, 1.3rem);
+    line-height: 1.5;
     color: var(--slate);
+    text-wrap: balance;
   }
-
-  a {
-    color: var(--cool);
-    text-decoration-color: var(--pale);
-    text-underline-offset: 0.25em;
-    transition: text-decoration-color 0.25s;
-  }
-
-  a:hover { text-decoration-color: var(--cool); }
 
   footer {
     padding: 0 1.5rem clamp(2rem, 6vh, 3rem);
@@ -124,17 +88,12 @@
     color: var(--slate);
   }
 
-  /* --- motion --------------------------------------------------------- */
-
   @media (prefers-reduced-motion: no-preference) {
-    .lockup, .rule, .pivot, .close, .thesis {
+    .lockup, .tagline {
       animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
-    .lockup { animation-delay: 0s; }
-    .rule   { animation-delay: 0.14s; }
-    .pivot  { animation-delay: 0.22s; }
-    .close  { animation-delay: 0.32s; }
-    .thesis { animation-delay: 0.42s; }
+    .lockup  { animation-delay: 0s; }
+    .tagline { animation-delay: 0.16s; }
     @keyframes rise {
       from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: none; }
@@ -150,19 +109,7 @@
     <h1>SWALLOWTAIL</h1>
   </div>
 
-  <hr class="rule">
-
-  <p class="pivot">About a third of data center electricity goes to cooling and
-  power overhead.</p>
-
-  <p class="close">Swallowtail is a world model on chips to plan their
-  thermodynamics. By predicting how much heat a workload produces, we control how
-  fast it should be run.</p>
-
-  <hr class="rule">
-
-  <p class="thesis">Intelligence does not need a better chip. It needs to learn the
-  one it has.</p>
+  <p class="tagline">Self-improving AI through software-hardware co-learning</p>
 </main>
 
 <footer>&copy; 2026 Swallowtail Labs, Inc.</footer>
