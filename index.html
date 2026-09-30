@@ -110,14 +110,6 @@
     color: var(--cool);
   }
 
-  .source {
-    margin: 1.1rem 0 0;
-    font-size: 0.8rem;
-    letter-spacing: 0.03em;
-    color: var(--slate);
-    opacity: 0.75;
-  }
-
   .close {
     margin: clamp(2.5rem, 7vh, 4rem) 0 0;
     font-size: clamp(0.95rem, 2.2vw, 1.02rem);
@@ -145,15 +137,14 @@
   /* --- motion --------------------------------------------------------- */
 
   @media (prefers-reduced-motion: no-preference) {
-    .lockup, .preface, .rule, .pivot, .source, .close {
+    .lockup, .preface, .rule, .pivot, .close {
       animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
     .lockup  { animation-delay: 0s; }
     .preface { animation-delay: 0.14s; }
     .rule    { animation-delay: 0.24s; }
     .pivot   { animation-delay: 0.32s; }
-    .source  { animation-delay: 0.40s; }
-    .close   { animation-delay: 0.48s; }
+    .close   { animation-delay: 0.42s; }
     @keyframes rise {
       from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: none; }
@@ -179,8 +170,6 @@
 
   <p class="pivot">About a third of data center electricity goes to cooling and
   power overhead.</p>
-
-  <p class="source">Uptime Institute 2025, average PUE 1.54.</p>
 
   <p class="close">Swallowtail is a world model on chips to plan their
   thermodynamics. By predicting how much heat a workload produces, we control how
