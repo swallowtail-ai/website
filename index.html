@@ -75,23 +75,10 @@
 
   /* --- text ----------------------------------------------------------- */
 
-  .preface,
   .pivot,
   .close {
     max-width: 34rem;
     text-wrap: pretty;
-  }
-
-  .preface {
-    margin: clamp(2.75rem, 7vh, 4rem) 0 0;
-    font-family: var(--serif);
-    font-size: clamp(1.1rem, 2.6vw, 1.3rem);
-    line-height: 1.75;
-    color: var(--slate);
-  }
-
-  .preface cite {
-    font-style: italic;
   }
 
   .rule {
@@ -137,14 +124,13 @@
   /* --- motion --------------------------------------------------------- */
 
   @media (prefers-reduced-motion: no-preference) {
-    .lockup, .preface, .rule, .pivot, .close {
+    .lockup, .rule, .pivot, .close {
       animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
-    .lockup  { animation-delay: 0s; }
-    .preface { animation-delay: 0.14s; }
-    .rule    { animation-delay: 0.24s; }
-    .pivot   { animation-delay: 0.32s; }
-    .close   { animation-delay: 0.42s; }
+    .lockup { animation-delay: 0s; }
+    .rule   { animation-delay: 0.14s; }
+    .pivot  { animation-delay: 0.22s; }
+    .close  { animation-delay: 0.32s; }
     @keyframes rise {
       from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: none; }
@@ -159,10 +145,6 @@
     <img class="mark" src="swallowtail-mark.svg" alt="Swallowtail mark" width="62" height="62">
     <h1>SWALLOWTAIL</h1>
   </div>
-
-  <p class="preface">Swallowtail names three things: a butterfly, one of Ren&eacute;
-  Thom&rsquo;s seven elementary catastrophes, and Dal&iacute;&rsquo;s last painting,
-  <cite>The Swallow&rsquo;s Tail</cite>. Dal&iacute; took the shape from Thom.</p>
 
   <hr class="rule">
 
