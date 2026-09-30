@@ -89,20 +89,28 @@
 
   .was {
     position: relative;
+    /* inline-block so the pseudo-elements get a box whose centre is the word's
+       centre; on a bare inline element they would centre on the line box */
+    display: inline-block;
+    margin-right: 0.4em;
     text-decoration: none;
   }
 
+  /* two diagonals crossing at the centre of the word */
+  .was::before,
   .was::after {
     content: "";
     position: absolute;
-    left: -0.06em;
-    right: -0.06em;
-    top: 0.58em;
+    left: -0.12em;
+    right: -0.12em;
+    top: 50%;
     height: 1px;
     background: currentColor;
-    transform: scaleX(1);
-    transform-origin: left center;
+    transform-origin: center;
   }
+
+  .was::before { transform: translateY(calc(-50% + 0.12em)) rotate(12deg)  scaleX(1); }
+  .was::after  { transform: translateY(calc(-50% + 0.12em)) rotate(-12deg) scaleX(1); }
 
   .now {
     color: var(--cool);
@@ -129,22 +137,30 @@
        co-learning holds its space from the start, so nothing reflows when it
        lands. The cost is that co-design sits left of centre until then, which
        is why the hold is short. */
+    .was::before {
+      transform: translateY(calc(-50% + 0.12em)) rotate(12deg) scaleX(0);
+      animation: crossA 0.42s cubic-bezier(0.65, 0, 0.35, 1) 1.3s forwards;
+    }
+
     .was::after {
-      transform: scaleX(0);
-      animation: strike 0.5s cubic-bezier(0.65, 0, 0.35, 1) 1.3s forwards;
+      transform: translateY(calc(-50% + 0.12em)) rotate(-12deg) scaleX(0);
+      animation: crossB 0.42s cubic-bezier(0.65, 0, 0.35, 1) 1.5s forwards;
     }
 
     .now {
       opacity: 0;
-      animation: reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.7s forwards;
+      animation: reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.95s forwards;
     }
 
     @keyframes rise {
       from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: none; }
     }
-    @keyframes strike {
-      to { transform: scaleX(1); }
+    @keyframes crossA {
+      to { transform: translateY(calc(-50% + 0.12em)) rotate(12deg) scaleX(1); }
+    }
+    @keyframes crossB {
+      to { transform: translateY(calc(-50% + 0.12em)) rotate(-12deg) scaleX(1); }
     }
     @keyframes reveal {
       from { opacity: 0; transform: translateY(4px); }
