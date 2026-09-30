@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swallowtail</title>
+<meta name="description" content="A world model on chips to plan their thermodynamics.">
+<link rel="icon" href="swallowtail-mark.svg" type="image/svg+xml">
+<meta property="og:title" content="Swallowtail">
+<meta property="og:description" content="A world model on chips to plan their thermodynamics.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://swallowtaillabs.com/">
+<style>
+  :root {
+    --ink:   #1A1A1A;
+    --slate: #4A5568;
+    --cool:  #1E3A5F;
+    --pale:  #E8E8E8;
+    --paper: #FDFDFC;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter,
+          Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1.5rem;
+  }
+
+  .mark {
+    width: 84px;
+    height: 84px;
+    margin-bottom: 2.25rem;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.9rem, 6vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--cool);
+  }
+
+  .tagline {
+    margin: 1rem 0 0;
+    font-size: clamp(1rem, 3vw, 1.15rem);
+    color: var(--ink);
+  }
+
+  .rule {
+    width: 44px;
+    height: 1px;
+    margin: 2.25rem 0;
+    background: var(--pale);
+    border: 0;
+  }
+
+  .summary {
+    margin: 0;
+    max-width: 30rem;
+    font-size: clamp(1rem, 3vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--slate);
+    text-wrap: balance;
+  }
+
+  footer {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    color: var(--slate);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    main > * {
+      animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .mark      { animation-delay: 0s; }
+    h1         { animation-delay: 0.08s; }
+    .tagline   { animation-delay: 0.16s; }
+    .rule      { animation-delay: 0.24s; }
+    .summary   { animation-delay: 0.30s; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <img class="mark" src="swallowtail-mark.svg" alt="Swallowtail mark" width="84" height="84">
+  <h1>SWALLOWTAIL</h1>
+  <p class="tagline">Chip as an Agent</p>
+  <hr class="rule">
+  <p class="summary">A world model on chips to plan their thermodynamics.</p>
+</main>
+
+<footer>&copy; 2026 Swallowtail Labs, Inc.</footer>
+
+</body>
+</html>
