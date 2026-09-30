@@ -30,18 +30,24 @@
 
   body {
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background: var(--paper);
     color: var(--ink);
     font: 400 17px/1.65 var(--sans);
     -webkit-font-smoothing: antialiased;
   }
 
+  /* the page is short now, so centre it rather than hanging it off the top */
   main {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: clamp(3.5rem, 11vh, 7rem) 1.5rem 0;
+    padding: clamp(3.5rem, 10vh, 6rem) 1.5rem;
   }
 
   /* --- wordmark ------------------------------------------------------ */
@@ -67,23 +73,6 @@
     color: var(--cool);
   }
 
-  /* --- the bifurcation set ------------------------------------------- */
-
-  .curve {
-    width: min(100%, 33rem);
-    height: auto;
-    margin-top: clamp(2rem, 5.5vh, 3.5rem);
-    overflow: visible;
-  }
-
-  .curve path {
-    fill: none;
-    stroke: var(--cool);
-    stroke-width: 2.2;
-    stroke-linecap: round;
-    opacity: 0.5;
-  }
-
   /* --- text ----------------------------------------------------------- */
 
   .preface,
@@ -94,7 +83,7 @@
   }
 
   .preface {
-    margin: clamp(3rem, 9vh, 5.5rem) 0 0;
+    margin: clamp(2.75rem, 7vh, 4rem) 0 0;
     font-family: var(--serif);
     font-size: clamp(1.1rem, 2.6vw, 1.3rem);
     line-height: 1.75;
@@ -138,7 +127,6 @@
   a:hover { text-decoration-color: var(--cool); }
 
   footer {
-    margin-top: clamp(4rem, 12vh, 7rem);
     padding: 0 1.5rem clamp(2rem, 6vh, 3rem);
     text-align: center;
     font-size: 0.82rem;
@@ -149,21 +137,14 @@
   /* --- motion --------------------------------------------------------- */
 
   @media (prefers-reduced-motion: no-preference) {
-    .curve path {
-      stroke-dasharray: 1;
-      stroke-dashoffset: 1;
-      animation: draw 2.8s cubic-bezier(0.45, 0, 0.2, 1) 0.35s forwards;
-    }
-    @keyframes draw { to { stroke-dashoffset: 0; } }
-
     .lockup, .preface, .rule, .pivot, .close {
       animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
     .lockup  { animation-delay: 0s; }
-    .preface { animation-delay: 0.5s; }
-    .rule    { animation-delay: 0.6s; }
-    .pivot   { animation-delay: 0.68s; }
-    .close   { animation-delay: 0.78s; }
+    .preface { animation-delay: 0.14s; }
+    .rule    { animation-delay: 0.24s; }
+    .pivot   { animation-delay: 0.32s; }
+    .close   { animation-delay: 0.42s; }
     @keyframes rise {
       from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: none; }
@@ -178,11 +159,6 @@
     <img class="mark" src="swallowtail-mark.svg" alt="Swallowtail mark" width="62" height="62">
     <h1>SWALLOWTAIL</h1>
   </div>
-
-  <svg class="curve" viewBox="0 0 1000 548" role="img"
-       aria-label="The swallowtail bifurcation set">
-    <path pathLength="1" d="M984.0 16.0 L963.6 35.2 L943.5 54.0 L923.8 72.2 L904.5 90.0 L885.6 107.2 L867.1 124.0 L848.9 140.3 L831.1 156.2 L813.7 171.5 L796.6 186.5 L779.9 201.0 L763.6 215.1 L747.6 228.8 L731.9 242.0 L716.6 254.8 L701.7 267.3 L687.1 279.3 L672.8 291.0 L658.9 302.3 L645.3 313.2 L632.0 323.8 L619.1 334.0 L606.5 343.9 L594.2 353.4 L582.2 362.6 L570.5 371.4 L559.2 380.0 L548.1 388.2 L537.4 396.1 L527.0 403.7 L516.9 411.1 L507.0 418.1 L497.5 424.9 L488.2 431.3 L479.3 437.6 L470.6 443.5 L462.2 449.2 L454.1 454.7 L446.3 459.9 L438.7 464.9 L431.4 469.6 L424.4 474.1 L417.6 478.4 L411.1 482.5 L404.9 486.4 L398.9 490.1 L393.2 493.6 L387.7 496.8 L382.4 499.9 L377.4 502.9 L372.7 505.6 L368.2 508.2 L363.9 510.6 L359.8 512.9 L356.0 515.0 L352.4 516.9 L349.0 518.7 L345.9 520.4 L342.9 521.9 L340.2 523.3 L337.7 524.6 L335.4 525.7 L333.3 526.8 L331.4 527.7 L329.7 528.5 L328.2 529.2 L326.8 529.8 L325.7 530.3 L324.8 530.8 L324.0 531.1 L323.4 531.3 L323.0 531.5 L322.8 531.6 L322.7 531.6 L322.8 531.6 L323.1 531.5 L323.6 531.3 L324.2 531.1 L324.9 530.8 L325.8 530.5 L326.9 530.1 L328.1 529.7 L329.4 529.2 L330.9 528.7 L332.5 528.2 L334.3 527.6 L336.2 527.0 L338.2 526.4 L340.4 525.7 L342.6 525.0 L345.0 524.4 L347.5 523.7 L350.2 522.9 L352.9 522.2 L355.7 521.5 L358.7 520.7 L361.7 520.0 L364.9 519.3 L368.1 518.5 L371.5 517.8 L374.9 517.0 L378.4 516.3 L382.0 515.6 L385.7 514.9 L389.4 514.2 L393.3 513.5 L397.2 512.8 L401.2 512.2 L405.2 511.6 L409.3 510.9 L413.5 510.3 L417.7 509.8 L422.0 509.2 L426.3 508.7 L430.7 508.2 L435.1 507.8 L439.5 507.3 L444.0 506.9 L448.6 506.5 L453.2 506.2 L457.8 505.9 L462.4 505.6 L467.0 505.3 L471.7 505.1 L476.4 504.9 L481.1 504.8 L485.8 504.6 L490.5 504.6 L495.3 504.5 L500.0 504.5 L504.7 504.5 L509.5 504.6 L514.2 504.6 L518.9 504.8 L523.6 504.9 L528.3 505.1 L533.0 505.3 L537.6 505.6 L542.2 505.9 L546.8 506.2 L551.4 506.5 L556.0 506.9 L560.5 507.3 L564.9 507.8 L569.3 508.2 L573.7 508.7 L578.0 509.2 L582.3 509.8 L586.5 510.3 L590.7 510.9 L594.8 511.6 L598.8 512.2 L602.8 512.8 L606.7 513.5 L610.6 514.2 L614.3 514.9 L618.0 515.6 L621.6 516.3 L625.1 517.0 L628.5 517.8 L631.9 518.5 L635.1 519.3 L638.3 520.0 L641.3 520.7 L644.3 521.5 L647.1 522.2 L649.8 522.9 L652.5 523.7 L655.0 524.4 L657.4 525.0 L659.6 525.7 L661.8 526.4 L663.8 527.0 L665.7 527.6 L667.5 528.2 L669.1 528.7 L670.6 529.2 L671.9 529.7 L673.1 530.1 L674.2 530.5 L675.1 530.8 L675.8 531.1 L676.4 531.3 L676.9 531.5 L677.2 531.6 L677.3 531.6 L677.2 531.6 L677.0 531.5 L676.6 531.3 L676.0 531.1 L675.2 530.8 L674.3 530.3 L673.2 529.8 L671.8 529.2 L670.3 528.5 L668.6 527.7 L666.7 526.8 L664.6 525.7 L662.3 524.6 L659.8 523.3 L657.1 521.9 L654.1 520.4 L651.0 518.7 L647.6 516.9 L644.0 515.0 L640.2 512.9 L636.1 510.6 L631.8 508.2 L627.3 505.6 L622.6 502.9 L617.6 499.9 L612.3 496.8 L606.8 493.6 L601.1 490.1 L595.1 486.4 L588.9 482.5 L582.4 478.4 L575.6 474.1 L568.6 469.6 L561.3 464.9 L553.7 459.9 L545.9 454.7 L537.8 449.2 L529.4 443.5 L520.7 437.6 L511.8 431.3 L502.5 424.9 L493.0 418.1 L483.1 411.1 L473.0 403.7 L462.6 396.1 L451.9 388.2 L440.8 380.0 L429.5 371.4 L417.8 362.6 L405.8 353.4 L393.5 343.9 L380.9 334.0 L368.0 323.8 L354.7 313.2 L341.1 302.3 L327.2 291.0 L312.9 279.3 L298.3 267.3 L283.4 254.8 L268.1 242.0 L252.4 228.8 L236.4 215.1 L220.1 201.0 L203.4 186.5 L186.3 171.5 L168.9 156.2 L151.1 140.3 L132.9 124.0 L114.4 107.2 L95.5 90.0 L76.2 72.2 L56.5 54.0 L36.4 35.2 L16.0 16.0"/>
-  </svg>
 
   <p class="preface">Swallowtail names three things: a butterfly, one of the seven
   elementary catastrophes in Ren&eacute; Thom&rsquo;s classification, and Salvador
