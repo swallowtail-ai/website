@@ -46,24 +46,26 @@
     padding: 4rem 1.5rem;
   }
 
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.7rem, 2.4vw, 1.15rem);
+  }
+
   .mark {
-    width: 84px;
-    height: 84px;
-    margin-bottom: 2.25rem;
+    flex: none;
+    width: clamp(46px, 10vw, 62px);
+    height: auto;
   }
 
   h1 {
-    margin: 0;
+    /* negative right margin cancels the trailing letter-space so the
+       lockup sits optically centred rather than pulled left */
+    margin: 0 -0.16em 0 0;
     font-size: clamp(1.9rem, 6vw, 2.6rem);
     font-weight: 600;
     letter-spacing: 0.16em;
     color: var(--cool);
-  }
-
-  .tagline {
-    margin: 1rem 0 0;
-    font-size: clamp(1rem, 3vw, 1.15rem);
-    color: var(--ink);
   }
 
   .rule {
@@ -95,11 +97,9 @@
     main > * {
       animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
-    .mark      { animation-delay: 0s; }
-    h1         { animation-delay: 0.08s; }
-    .tagline   { animation-delay: 0.16s; }
-    .rule      { animation-delay: 0.24s; }
-    .summary   { animation-delay: 0.30s; }
+    .lockup    { animation-delay: 0s; }
+    .rule      { animation-delay: 0.12s; }
+    .summary   { animation-delay: 0.20s; }
     @keyframes rise {
       from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: none; }
@@ -110,9 +110,10 @@
 <body>
 
 <main>
-  <img class="mark" src="swallowtail-mark.svg" alt="Swallowtail mark" width="84" height="84">
-  <h1>SWALLOWTAIL</h1>
-  <p class="tagline">Chip as an Agent</p>
+  <div class="lockup">
+    <img class="mark" src="swallowtail-mark.svg" alt="Swallowtail mark" width="62" height="62">
+    <h1>SWALLOWTAIL</h1>
+  </div>
   <hr class="rule">
   <p class="summary">A world model on chips to plan their thermodynamics.</p>
 </main>
