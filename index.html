@@ -75,9 +75,39 @@
     margin: clamp(1.6rem, 4.5vh, 2.4rem) 0 0;
     font-family: var(--serif);
     font-size: clamp(1.08rem, 2.8vw, 1.3rem);
-    line-height: 1.5;
+    line-height: 1.6;
     color: var(--slate);
-    text-wrap: balance;
+  }
+
+  /* keep the compound and the term pair from breaking across lines */
+  .nb,
+  .terms { white-space: nowrap; }
+
+  /* the term being replaced, and its replacement. Both terms stay on the page:
+     the strike is the argument. Default state is the resolved one, so a reader
+     with animation off sees the finished sentence rather than a half-made point. */
+
+  .was {
+    position: relative;
+    text-decoration: none;
+  }
+
+  .was::after {
+    content: "";
+    position: absolute;
+    left: -0.06em;
+    right: -0.06em;
+    top: 0.58em;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+
+  .now {
+    color: var(--cool);
+    font-weight: 500;
+    opacity: 1;
   }
 
   footer {
@@ -94,8 +124,30 @@
     }
     .lockup  { animation-delay: 0s; }
     .tagline { animation-delay: 0.16s; }
+
+    /* Hold on the old term long enough to read it, then cross it out.
+       co-learning holds its space from the start, so nothing reflows when it
+       lands. The cost is that co-design sits left of centre until then, which
+       is why the hold is short. */
+    .was::after {
+      transform: scaleX(0);
+      animation: strike 0.5s cubic-bezier(0.65, 0, 0.35, 1) 1.3s forwards;
+    }
+
+    .now {
+      opacity: 0;
+      animation: reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.7s forwards;
+    }
+
     @keyframes rise {
       from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes strike {
+      to { transform: scaleX(1); }
+    }
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(4px); }
       to   { opacity: 1; transform: none; }
     }
   }
@@ -109,7 +161,8 @@
     <h1>SWALLOWTAIL</h1>
   </div>
 
-  <p class="tagline">Self-improving AI through software-hardware co-learning</p>
+  <p class="tagline">Self-improving AI through <span class="nb">software-hardware</span>
+  <span class="terms"><s class="was">co-design</s> <span class="now">co-learning</span></span></p>
 </main>
 
 <footer>&copy; 2026 Swallowtail Labs, Inc.</footer>
