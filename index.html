@@ -128,12 +128,6 @@
     color: var(--slate);
   }
 
-  .more {
-    margin: 1.4rem 0 0;
-    font-size: 0.9rem;
-    letter-spacing: 0.02em;
-  }
-
   a {
     color: var(--cool);
     text-decoration-color: var(--pale);
@@ -162,7 +156,7 @@
     }
     @keyframes draw { to { stroke-dashoffset: 0; } }
 
-    .lockup, .preface, .rule, .pivot, .close, .more {
+    .lockup, .preface, .rule, .pivot, .close {
       animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
     .lockup  { animation-delay: 0s; }
@@ -170,7 +164,6 @@
     .rule    { animation-delay: 0.6s; }
     .pivot   { animation-delay: 0.68s; }
     .close   { animation-delay: 0.78s; }
-    .more    { animation-delay: 0.86s; }
     @keyframes rise {
       from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: none; }
@@ -206,8 +199,6 @@
   <p class="close">Swallowtail is a world model on chips to plan their
   thermodynamics. Heat is decided before the workload runs, so the chip runs at its
   limit.</p>
-
-  <p class="more"><a href="https://thermau5.github.io/why_swallowtail/">Read the theorem</a></p>
 </main>
 
 <footer>&copy; 2026 Swallowtail Labs, Inc.</footer>
