@@ -82,6 +82,51 @@
   /* keep the compound from breaking across lines */
   .nb { white-space: nowrap; }
 
+  /* The rejected term above, the real one below. Both are block-level but
+     shrink to their own width so the cross spans the word, not the line.
+     Default state is resolved, so no-animation readers see the finished pair. */
+  .swap {
+    display: block;
+    margin-top: 0.4em;
+  }
+
+  .was,
+  .now {
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
+    line-height: 1.35;
+  }
+
+  .was {
+    position: relative;
+    margin-bottom: 0.12em;
+    opacity: 0.55;
+    text-decoration: none;
+  }
+
+  .was::before,
+  .was::after {
+    content: "";
+    position: absolute;
+    left: -0.12em;
+    right: -0.12em;
+    top: 50%;
+    height: 1px;
+    background: currentColor;
+    transform-origin: center;
+  }
+
+  /* +0.12em drops the intersection from the em-box centre to the ink centre */
+  .was::before { transform: translateY(calc(-50% + 0.12em)) rotate(10deg)  scaleX(1); }
+  .was::after  { transform: translateY(calc(-50% + 0.12em)) rotate(-10deg) scaleX(1); }
+
+  .now {
+    color: var(--cool);
+    font-weight: 500;
+    opacity: 1;
+  }
+
   footer {
     padding: 0 1.5rem clamp(2rem, 6vh, 3rem);
     text-align: center;
@@ -97,8 +142,34 @@
     .lockup  { animation-delay: 0s; }
     .tagline { animation-delay: 0.16s; }
 
+    /* read the old term, cross it, then drop in the replacement beneath */
+    .was::before {
+      transform: translateY(calc(-50% + 0.12em)) rotate(10deg) scaleX(0);
+      animation: crossA 0.4s cubic-bezier(0.65, 0, 0.35, 1) 1.25s forwards;
+    }
+
+    .was::after {
+      transform: translateY(calc(-50% + 0.12em)) rotate(-10deg) scaleX(0);
+      animation: crossB 0.4s cubic-bezier(0.65, 0, 0.35, 1) 1.42s forwards;
+    }
+
+    .now {
+      opacity: 0;
+      animation: reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.85s forwards;
+    }
+
     @keyframes rise {
       from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes crossA {
+      to { transform: translateY(calc(-50% + 0.12em)) rotate(10deg) scaleX(1); }
+    }
+    @keyframes crossB {
+      to { transform: translateY(calc(-50% + 0.12em)) rotate(-10deg) scaleX(1); }
+    }
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(5px); }
       to   { opacity: 1; transform: none; }
     }
   }
@@ -112,8 +183,7 @@
     <h1>SWALLOWTAIL</h1>
   </div>
 
-  <p class="tagline">Self-improving AI through <span class="nb">software-hardware</span>
-  co-learning</p>
+  <p class="tagline">Self-improving AI through <span class="nb">software-hardware</span><span class="swap"><s class="was">co-design</s><span class="now">co-learning</span></span></p>
 </main>
 
 <footer>&copy; 2026 Swallowtail Labs, Inc.</footer>
