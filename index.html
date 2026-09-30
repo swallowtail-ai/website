@@ -76,6 +76,7 @@
   /* --- text ----------------------------------------------------------- */
 
   .pivot,
+  .thesis,
   .close {
     max-width: 34rem;
     text-wrap: pretty;
@@ -89,7 +90,9 @@
     border: 0;
   }
 
-  .pivot {
+  /* the two claims: the problem, and the thesis it opens onto */
+  .pivot,
+  .thesis {
     margin: 0;
     font-family: var(--serif);
     font-size: clamp(1.3rem, 3.4vw, 1.7rem);
@@ -124,13 +127,14 @@
   /* --- motion --------------------------------------------------------- */
 
   @media (prefers-reduced-motion: no-preference) {
-    .lockup, .rule, .pivot, .close {
+    .lockup, .rule, .pivot, .close, .thesis {
       animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
     .lockup { animation-delay: 0s; }
     .rule   { animation-delay: 0.14s; }
     .pivot  { animation-delay: 0.22s; }
     .close  { animation-delay: 0.32s; }
+    .thesis { animation-delay: 0.42s; }
     @keyframes rise {
       from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: none; }
@@ -154,6 +158,11 @@
   <p class="close">Swallowtail is a world model on chips to plan their
   thermodynamics. By predicting how much heat a workload produces, we control how
   fast it should be run.</p>
+
+  <hr class="rule">
+
+  <p class="thesis">Intelligence does not need a better chip. It needs to learn the
+  one it has.</p>
 </main>
 
 <footer>&copy; 2026 Swallowtail Labs, Inc.</footer>
