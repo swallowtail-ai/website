@@ -83,13 +83,13 @@
   .nb { white-space: nowrap; }
 
   /* The rejected term sits above its replacement, inline after the compound.
-     inline-block means the swap's baseline is its last line box, so co-learning
-     lands on the sentence baseline and co-design lifts clear of it. Children
+     vertical-align: middle centres the pair on the sentence, so the line runs
+     between the two terms rather than level with either. Children
      shrink to their own width so the cross spans the word, not the column.
      Default state is resolved, so no-animation readers see the finished pair. */
   .swap {
     display: inline-block;
-    vertical-align: baseline;
+    vertical-align: middle;
     text-align: center;
   }
 
@@ -186,7 +186,7 @@
     <h1>SWALLOWTAIL</h1>
   </div>
 
-  <p class="tagline">Self-improving AI through <span class="nb">software-hardware</span> <span class="swap"><s class="was">co-design</s><span class="now">co-learning</span></span></p>
+  <p class="tagline">self-improving AI through <span class="nb">software-hardware</span> <span class="swap"><s class="was">co-design</s><span class="now">co-learning</span></span></p>
 </main>
 
 <footer>&copy; 2026 Swallowtail Labs, Inc.</footer>
