@@ -71,7 +71,7 @@
   }
 
   .tagline {
-    max-width: 30rem;
+    max-width: 40rem;
     margin: clamp(1.6rem, 4.5vh, 2.4rem) 0 0;
     font-family: var(--serif);
     font-size: clamp(1.08rem, 2.8vw, 1.3rem);
@@ -82,12 +82,15 @@
   /* keep the compound from breaking across lines */
   .nb { white-space: nowrap; }
 
-  /* The rejected term above, the real one below. Both are block-level but
-     shrink to their own width so the cross spans the word, not the line.
+  /* The rejected term sits above its replacement, inline after the compound.
+     inline-block means the swap's baseline is its last line box, so co-learning
+     lands on the sentence baseline and co-design lifts clear of it. Children
+     shrink to their own width so the cross spans the word, not the column.
      Default state is resolved, so no-animation readers see the finished pair. */
   .swap {
-    display: block;
-    margin-top: 0.4em;
+    display: inline-block;
+    vertical-align: baseline;
+    text-align: center;
   }
 
   .was,
@@ -183,7 +186,7 @@
     <h1>SWALLOWTAIL</h1>
   </div>
 
-  <p class="tagline">Self-improving AI through <span class="nb">software-hardware</span><span class="swap"><s class="was">co-design</s><span class="now">co-learning</span></span></p>
+  <p class="tagline">Self-improving AI through <span class="nb">software-hardware</span> <span class="swap"><s class="was">co-design</s><span class="now">co-learning</span></span></p>
 </main>
 
 <footer>&copy; 2026 Swallowtail Labs, Inc.</footer>
