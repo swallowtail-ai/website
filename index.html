@@ -145,7 +145,22 @@
     .lockup  { animation-delay: 0s; }
     .tagline { animation-delay: 0.16s; }
 
-    /* read the old term, cross it, then drop in the replacement beneath */
+    /* The sentence first reads as the conventional claim: co-design sits in the
+       slot, at full weight, as if it were the term. It gets crossed out, then
+       displaced upward as co-learning takes the slot it vacated. --lift was
+       measured, not derived: it is the shift that puts co-design's baseline on
+       the sentence's baseline. Remeasure it if the serif or line-height change. */
+    .swap {
+      --lift: 0.584em;
+      transform: translateY(var(--lift));
+      animation: push 0.65s cubic-bezier(0.22, 1, 0.36, 1) 1.95s forwards;
+    }
+
+    .was {
+      opacity: 1;
+      animation: dim 0.65s ease 1.95s forwards;
+    }
+
     .was::before {
       transform: translateY(calc(-50% + 0.12em)) rotate(10deg) scaleX(0);
       animation: crossA 0.4s cubic-bezier(0.65, 0, 0.35, 1) 1.25s forwards;
@@ -158,7 +173,7 @@
 
     .now {
       opacity: 0;
-      animation: reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.85s forwards;
+      animation: reveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) 2.15s forwards;
     }
 
     @keyframes rise {
@@ -170,6 +185,12 @@
     }
     @keyframes crossB {
       to { transform: translateY(calc(-50% + 0.12em)) rotate(-10deg) scaleX(1); }
+    }
+    @keyframes push {
+      to { transform: translateY(0); }
+    }
+    @keyframes dim {
+      to { opacity: 0.55; }
     }
     @keyframes reveal {
       from { opacity: 0; transform: translateY(5px); }
